@@ -1,0 +1,47 @@
+\section{line\+Detector}
+\label{group__lineDetector}\index{lineDetector@{lineDetector}}
+
+
+This module takes as input the R\+GB image containing two lines composed of a set of Ar\+Uco markers and publishes the estimated pose of the markers with respect to the robot camera and root.  
+
+
+This module takes as input the R\+GB image containing two lines composed of a set of Ar\+Uco markers and publishes the estimated pose of the markers with respect to the robot camera and root. 
+
+Version\+:0.\+3.\+0 \begin{DoxyAuthor}{Author}
+Valentina Vasco \href{mailto:valentina.vasco@iit.it}{\texttt{ valentina.\+vasco@iit.\+it}} ~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+Released under the terms of the B\+SD 3-\/Clause License. 
+\end{DoxyCopyright}
+\hypertarget{group__skeletonViewer_intro_sec}{}\subsection{Description}\label{group__skeletonViewer_intro_sec}
+This module takes as input the R\+GB image containing two lines composed of a set of markers and publishes the estimated poses of the markers with respect to the camera and to robot root. It makes use of an Open\+CV Ar\+Uco Board of 6x1 markers. The used board can be found in {\ttfamily app/conf} (the two images were sticked togheter for printing a marker big enough to be visible from a certain distance). The detected start and finish lines are published into the objects\+Properties\+Collector, with the pose estimated with respect to the robot camera ({\ttfamily pose\+\_\+camera}) and to the robot root ({\ttfamily pose\+\_\+root}), as following\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((finish-line (pose\_camera (x y z ax ay az theta)) (pose\_root (x y z ax ay az theta))) (\textcolor{keywordtype}{id} opc\_id))}
+\end{DoxyCode}
+\hypertarget{group__skeletonViewer_parameters_sec}{}\subsection{Parameters}\label{group__skeletonViewer_parameters_sec}
+
+\begin{DoxyItemize}
+\item --name\+: The module\textquotesingle{}s name; all the open ports will be tagged with the prefix /name.
+\item --nx\+: Vector containing the number of markers along X direction, for the start and the finish line respectively.
+\item --ny\+: Vector containing the number of markers along Y direction, for the start and the finish line respectively.
+\item --marker-\/size\+: Vector containing the marker\textquotesingle{}s length, for the start and the finish line respectively \mbox{[}m\mbox{]}.
+\item --marker-\/dist\+: Vector containing the distance between markers, for the start and the finish line respectively \mbox{[}m\mbox{]}. 
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_inputports_sec}{}\subsection{Input Ports}\label{group__skeletonViewer_inputports_sec}
+
+\begin{DoxyItemize}
+\item /line\+Detector/img\+:i \mbox{[}Image\+Of\+Pixel\+Rgb\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Receives the R\+GB image.
+\item /line\+Detector/gaze/state\+:i \mbox{[}Property\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Retrieves the current pose of the camera.
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_outputports_sec}{}\subsection{Output Ports}\label{group__skeletonViewer_outputports_sec}
+
+\begin{DoxyItemize}
+\item /line\+Detector/img\+:o \mbox{[}Image\+Of\+Pixel\+Rgb\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Streams out the input image with detected axes.
+\item /line\+Detector/cam\+:rpc \mbox{[}rpc\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Retrieves intrinsics from the camera.
+\item /line\+Detector/opc\+:rpc \mbox{[}rpc\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Adds the start and the finish line to objects\+Properties\+Collector.
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_services_sec}{}\subsection{Services}\label{group__skeletonViewer_services_sec}
+
+\begin{DoxyItemize}
+\item /line\+Detector/cmd\+:rpc \mbox{[}rpc-\/server\mbox{]}\+: service port . This service is described in \mbox{\hyperlink{classlineDetector__IDL}{line\+Detector\+\_\+\+I\+DL}} (idl.\+thrift) 
+\end{DoxyItemize}

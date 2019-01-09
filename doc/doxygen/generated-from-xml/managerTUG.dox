@@ -1,0 +1,61 @@
+
+  /**
+  *
+  * @ingroup managerTUG 
+  * \defgroup managerTUG managerTUG
+  * This module supervises the all the modules involved in the Timed Up and Go (TUG).
+  * Version:
+  * \author  Valentina Vasco valentina.vasco@iit.it
+  * \n
+  * \copyright Released under the terms of the BSD 3-Clause License.
+  * \section intro_sec Description
+  *
+  
+
+  
+  * \section parameters_sec Parameters     
+  
+  *- --module_name: Name of the module. All the open ports will be tagged with the prefix /module_name.
+  *- --period: Periodicity of the module.
+  *- --speak-file: Configuration file name for the speak.
+  *- --finish-line-thresh: Threshold on the distance between foot and finish line [m].
+  *- --standing-thresh: Threshold on the speed of the shoulder center height [m/s].
+  *- --starting-pose: Robot initial pose (x,y,theta) wrt world frame when starting the TUG.
+  * \section inputports_sec Input Ports
+  * 
+  * \section outputports_sec Output Ports
+  * 
+  *- /managerTUG/attention:rpc [rpc]  [default carrier:]: 
+          Sends commands to \ref attentionManager to redirect the robot's gaze toward the engaged user.
+        
+  *
+  
+  *- /managerTUG/analyzer:rpc [rpc]  [default carrier:]: 
+          Sends commands to \ref motionAnalyzer for starting/stopping the real-time motion analysis.
+        
+  *
+  
+  *- /managerTUG/speech:rpc [rpc]  [default carrier:]: 
+          Sends commands to \ref iSpeak to wait until the sentence is spoken.
+        
+  *
+  
+  *- /managerTUG/speech:o [Bottle]  [default carrier:]: 
+          Streams out the verbal interaction. To be connected to \ref iSpeak.
+        
+  *
+  
+  *
+  * \section services_sec Services
+  * 
+  *- /managerTUG/cmd:rpc
+  *  [rpc-server]: 
+  * service port
+  * . This service is described in managerTUG_IDL (idl.thrift)
+  * 
+  *
+  * 
+  *
+  *
+  **/
+

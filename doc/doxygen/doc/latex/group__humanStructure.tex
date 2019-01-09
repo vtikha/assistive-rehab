@@ -1,0 +1,33 @@
+\section{human\+Structure}
+\label{group__humanStructure}\index{humanStructure@{humanStructure}}
+
+
+This module takes as input an image and 2D skeleton data and outputs sorted blobs around their faces.  
+
+
+This module takes as input an image and 2D skeleton data and outputs sorted blobs around their faces. 
+
+Version\+:0.\+3.\+0 \begin{DoxyAuthor}{Author}
+Vadim Tikhanoff \href{mailto:vadim.tikhanoff@iit.it}{\texttt{ vadim.\+tikhanoff@iit.\+it}} ~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+Released under the terms of the B\+SD 3-\/Clause License. 
+\end{DoxyCopyright}
+\hypertarget{group__skeletonViewer_intro_sec}{}\subsection{Description}\label{group__skeletonViewer_intro_sec}
+This module takes as input an image and 2D skeleton data from yarp\+Open\+Pose and outputs sorted blobs around their faces. Skeleton data are used to define blobs, whose corners are extracted from right ear and left ear keypoints (if one of the two is not detected, the nose is used). Only skeletons with valid nose keypoints are considered, to avoid sending backward oriented faces. Detected blobs are finally sorted from left to right to avoid confusion in case of occlusion (yarp\+Open\+Pose outputs an unsorted list of 2D skeletons).\hypertarget{group__skeletonViewer_parameters_sec}{}\subsection{Parameters}\label{group__skeletonViewer_parameters_sec}
+
+\begin{DoxyItemize}
+\item --name\+: The module\textquotesingle{}s name; all the open ports will be tagged with the prefix /name. 
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_inputports_sec}{}\subsection{Input Ports}\label{group__skeletonViewer_inputports_sec}
+
+\begin{DoxyItemize}
+\item /human\+Structure/skeleton\+:i \mbox{[}Bottle\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Receives the 2D input skeletons. To be connected to \textbackslash{}yarp\+Open\+Pose\textbackslash{}target\+:o.
+\item /human\+Structure/image\+:i \mbox{[}Image\+Of\+Pixel\+Rgb\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Receives the input image. To be connected to \textbackslash{}yarp\+Open\+Pose\textbackslash{}propag\+:o.
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_outputports_sec}{}\subsection{Output Ports}\label{group__skeletonViewer_outputports_sec}
+
+\begin{DoxyItemize}
+\item /human\+Structure/image\+:o \mbox{[}Image\+Of\+Pixel\+Rgb\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Streams out the input image with blobs around the detected faces.
+\item /human\+Structure/target\+:o \mbox{[}Bottle\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Streams out the 2D input skeleton.
+\item /human\+Structure/blobs\+:o \mbox{[}Bottle\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Streams out blobs\textquotesingle{} coordinates around detected faces as top left and bottom right corners.
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_services_sec}{}\subsection{Services}\label{group__skeletonViewer_services_sec}

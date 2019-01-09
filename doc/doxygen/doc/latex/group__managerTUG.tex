@@ -1,0 +1,39 @@
+\section{manager\+T\+UG}
+\label{group__managerTUG}\index{managerTUG@{managerTUG}}
+
+
+This module supervises the all the modules involved in the Timed Up and Go (T\+UG).  
+
+
+This module supervises the all the modules involved in the Timed Up and Go (T\+UG). 
+
+Version\+: \begin{DoxyAuthor}{Author}
+Valentina Vasco \href{mailto:valentina.vasco@iit.it}{\texttt{ valentina.\+vasco@iit.\+it}} ~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+Released under the terms of the B\+SD 3-\/Clause License. 
+\end{DoxyCopyright}
+\hypertarget{group__skeletonViewer_intro_sec}{}\subsection{Description}\label{group__skeletonViewer_intro_sec}
+\hypertarget{group__skeletonViewer_parameters_sec}{}\subsection{Parameters}\label{group__skeletonViewer_parameters_sec}
+
+\begin{DoxyItemize}
+\item --module\+\_\+name\+: Name of the module. All the open ports will be tagged with the prefix /module\+\_\+name.
+\item --period\+: Periodicity of the module.
+\item --speak-\/file\+: Configuration file name for the speak.
+\item --finish-\/line-\/thresh\+: Threshold on the distance between foot and finish line \mbox{[}m\mbox{]}.
+\item --standing-\/thresh\+: Threshold on the speed of the shoulder center height \mbox{[}m/s\mbox{]}.
+\item --starting-\/pose\+: Robot initial pose (x,y,theta) wrt world frame when starting the T\+UG. 
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_inputports_sec}{}\subsection{Input Ports}\label{group__skeletonViewer_inputports_sec}
+\hypertarget{group__skeletonViewer_outputports_sec}{}\subsection{Output Ports}\label{group__skeletonViewer_outputports_sec}
+
+\begin{DoxyItemize}
+\item /manager\+T\+U\+G/attention\+:rpc \mbox{[}rpc\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Sends commands to \mbox{\hyperlink{group__attentionManager}{attention\+Manager}} to redirect the robot\textquotesingle{}s gaze toward the engaged user.
+\item /manager\+T\+U\+G/analyzer\+:rpc \mbox{[}rpc\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Sends commands to \mbox{\hyperlink{group__motionAnalyzer}{motion\+Analyzer}} for starting/stopping the real-\/time motion analysis.
+\item /manager\+T\+U\+G/speech\+:rpc \mbox{[}rpc\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Sends commands to i\+Speak to wait until the sentence is spoken.
+\item /manager\+T\+U\+G/speech\+:o \mbox{[}Bottle\mbox{]} \mbox{[}default carrier\+:\mbox{]}\+: Streams out the verbal interaction. To be connected to i\+Speak.
+\end{DoxyItemize}\hypertarget{group__skeletonViewer_services_sec}{}\subsection{Services}\label{group__skeletonViewer_services_sec}
+
+\begin{DoxyItemize}
+\item /manager\+T\+U\+G/cmd\+:rpc \mbox{[}rpc-\/server\mbox{]}\+: service port . This service is described in \mbox{\hyperlink{classmanagerTUG__IDL}{manager\+T\+U\+G\+\_\+\+I\+DL}} (idl.\+thrift) 
+\end{DoxyItemize}

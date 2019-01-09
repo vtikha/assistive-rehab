@@ -1,0 +1,59 @@
+
+  /**
+  *
+  * @ingroup humanStructure 
+  * \defgroup humanStructure humanStructure
+  * This module takes as input an image and 2D skeleton data and outputs sorted blobs around their faces.
+  * Version:0.3.0
+  * \author  Vadim Tikhanoff vadim.tikhanoff@iit.it
+  * \n
+  * \copyright  Released under the terms of the BSD 3-Clause License.
+  * \section intro_sec Description
+  *
+  
+   This module takes as input an image and 2D skeleton data from yarpOpenPose and outputs sorted blobs around their faces.
+   Skeleton data are used to define blobs, whose corners are extracted from right ear and left ear keypoints (if one of the two is not detected, the nose is used).
+   Only skeletons with valid nose keypoints are considered, to avoid sending backward oriented faces.
+   Detected blobs are finally sorted from left to right to avoid confusion in case of occlusion (yarpOpenPose outputs an unsorted list of 2D skeletons).
+  
+  * \section parameters_sec Parameters     
+  
+  *- --name: The module's name; all the open ports will be tagged with the prefix /name.
+  * \section inputports_sec Input Ports
+  * 
+  *- /humanStructure/skeleton:i [Bottle]  [default carrier:]: 
+            Receives the 2D input skeletons. To be connected to \yarpOpenPose\target:o.
+          
+  *
+  
+  *- /humanStructure/image:i [ImageOfPixelRgb]  [default carrier:]: 
+            Receives the input image. To be connected to \yarpOpenPose\propag:o.
+          
+  *
+  
+  * \section outputports_sec Output Ports
+  * 
+  *- /humanStructure/image:o [ImageOfPixelRgb]  [default carrier:]: 
+            Streams out the input image with blobs around the detected faces.
+          
+  *
+  
+  *- /humanStructure/target:o [Bottle]  [default carrier:]: 
+            Streams out the 2D input skeleton.
+          
+  *
+  
+  *- /humanStructure/blobs:o [Bottle]  [default carrier:]: 
+            Streams out blobs' coordinates around detected faces as top left and bottom right corners.
+          
+  *
+  
+  *
+  * \section services_sec Services
+  * 
+  *
+  * 
+  *
+  *
+  **/
+
